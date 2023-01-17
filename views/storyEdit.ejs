@@ -1,0 +1,96 @@
+<%- include("partials/header.ejs") %>
+    <!-- Story Form -->
+    <div class=" container">
+        <a href="/api/stories/completeStory/<%= story._id %>" class="backButton"><i class="fa-solid fa-arrow-left"></i>  </a>
+        <div class="row section">
+            <form class="col s12" action="/api/stories/edit/<%= story._id %>?_method=PUT" method="POST" id="storyForm" name="form">
+                <h3 class="center-align">Story Editor</h2>
+                    <!-- Story Title -->
+                    <div class="highlight">
+                        <label for="title">Story Title</label>
+                        <div class="input-field row">
+                            <i class="material-icons prefix">title</i>
+
+                            <input type="text" placeholder="If no title entered, default title will be untitled" class="validate" id="title" name="title" value="<%=story.title %>">
+                        </div>
+                    </div>
+                    <!-- Story Rating -->
+
+                    <div class="highlight">
+                        <label for="rating"> What kind of spooky experience did you have?</label>
+                        <p>
+                            <label>
+                    <input name="rating" type="radio" id="amazing" value ="amazing" class="validate" required="true" aria-required="true"/>
+                    <span><i class="material-icons skyBlue">sentiment_very_satisfied
+                    </i>  It was an illusion</span>
+                    </label>
+                        </p>
+                        <p>
+                            <label>
+                        <input name="rating" type="radio" id="nice" value ="nice" />
+                        <span><i class="material-icons lightGreen">sentiment_satisfied
+                        </i> The ghost was friendly</span>
+                        </label>
+                        </p>
+                        <p>
+                            <label>
+                        <input name="rating" type="radio" id="neutral" value ="neutral" />
+                        <span><i class="material-icons neutral-yellow">sentiment_neutral
+                        </i>  A bit scary</span>
+                        </label>
+                        </p>
+                        <p>
+                            <label>
+                        <input name="rating" type="radio" id="stress" value ="stress" />
+                        <span><i class="material-icons stress-orange">sentiment_dissatisfied
+                        </i>  I was scared shitless</span>
+                        </label>
+                        </p>
+                        <p>
+                            <label>
+                        <input name="rating" type="radio" id="nightmare" value ="nightmare" />
+                        <span><i class="material-icons scarry-red">sentiment_very_dissatisfied
+                        </i>  I made a run for life</span>
+                        </label>
+                        </p>
+                    </div>
+                    <!-- Friend's Story -->
+                    <div class="highlight">
+                        <p>
+                            <label>
+                              <input type="checkbox" class="filled-in" name="friends" id="friends" value="true"/>
+                              <span>Was this your friend's experience?</span>
+                            </label>
+                        </p>
+                    </div>
+                    <!-- Story Description -->
+                    <div class="highlight">
+                        <label for="story">What is your story?</label>
+                        <div class="input-field ">
+                            <i class="material-icons prefix">subject
+                        </i>
+                            <textarea id="story" class="materialize-textarea validate" name="story" required placeholder="I experienced that..."><%= story.story %></textarea>
+                        </div>
+                    </div>
+                    <!-- Story Date -->
+                    <div class="highlight">
+                        <label for="date">When was your story?</label>
+                        <div class="input-field row validate">
+                            <i class="material-icons prefix">today</i>
+                            <input type="text" class="datepicker validate" name="date" id="date" required="true" aria-required="true" value="<%=story.date %>">
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <button id="update" class="btn waves-effect waves-light waves-lightBlue input-field col" type="submit">Submit
+                    <i class="material-icons right">cloud_upload</i>
+                  </button>
+
+            </form>
+        </div>
+        <script>
+            document.getElementById(`<%= story.rating %>`).checked = true;
+            if ('<%= story.friends %>') {
+                document.getElementById("friends").checked = true
+            }
+        </script>
+        <%- include("partials/footer.ejs") %>
