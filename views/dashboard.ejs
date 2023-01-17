@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+    <div class="storiesBackground">
+        <div class="storyForm">
+            <div class="heading">
+                <h3>My Stories</h3>
+            </div>
+            <% if(stories.length < 1){ %>
+                <p>You have not entered any stories.</p>
+                <% } else{ %>
+                    <div class="row">
+                        <% for(var i = 0; i < stories.length; i++) { %>
+                            <div class="col s9">
+                                <div class="card grey darken-4">                                    
+                                    <div class="card-action">
+                                        <a href="/api/stories/completeStory/<%=stories[i]._id%>">
+                                            <%= stories[i].title %>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }}%>
+                                <div class="fixed-action-btn">
+                                    <a href="/api/stories/storyForm" class="btn-floating btn-large red pulse">
+                                        <i class="large material-icons">add</i>
+                                    </a>
+                                </div>
+                    </div>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
