@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+    <div class="storiesBackground">
+        <div class="storyForm">
+            <div class="heading">
+                <h3>This is Spookyland</h3>
+            </div>
+            <% if(stories.length < 1){ %>
+                <p>You have not entered any stories.</p>
+                <% } else{ %>
+                    <div class="row">
+                        <% for(var i = 0; i < stories.length; i++) { %>
+                            <div class="col s12 l4">
+                                <div class="card medium grey darken-4">
+                                    <div class="card-image small">
+                                        <img src="<%= stories[i].image %>">
+                                        <span class="card-title"><%= stories[i].date %></span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>
+                                            <%= stories[i].story.substring(0,70) %> ...
+                                        </p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a href="/api/stories/completeStory/<%=stories[i]._id%>">
+                                            <%= stories[i].title %>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }}%>
+                                <% if(user){ %>
+                                    <div class="fixed-action-btn">
+                                        <a href="/api/stories/storyForm" class="btn-floating btn-large pink pulse">
+                                            <i class="large material-icons">add</i>
+                                        </a>
+                                    </div>
+                                    <% }%>
+                    </div>
+        </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
