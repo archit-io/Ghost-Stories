@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+    <div>
+        <video src="https://res.cloudinary.com/dcde0wqqt/video/upload/v1673878575/spooky1_yo1ij2.mp4" autoplay loop playsinline muted>
+    </video>
+    </div>
+    <section class="row">
+        <div class="container">
+            <div class="about-header col s12">
+                <h4>A compendium of really<br>spooky stories.</h4>
+                <!-- <span class="quotePerson">-Carl Jung</span> -->
+            </div>
+            <div class="col s12 l6">
+                <p>Fear is when we are alone in a dark and damp room and we suddenly realize that we are not alone there.</p>
+                <p>Each one of us had a time in our lives when we had a paranormal encounter. We present to you a collection of such real life harrowing paranormal encounters.</p>
+                <% if(!user){%>
+                    <h3 class="aboutLoginButton">Log in to record your spooky experiences</h3>
+                    <a href="/auth/google " class="waves-effect waves-light btn-large indigo darken-2 rounded"> Log in with <span class="google">Google</span></a>
+                <%  } %>
+            </div>
+            <div class="col s12 l6">
+                <img class="aboutImage" src="https://res.cloudinary.com/dcde0wqqt/image/upload/v1673889549/halloween-g74ecbaec6_1920_stmopw.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <%- include("partials/footer.ejs") %>
